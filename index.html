@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You Mansi💕</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Comic Sans MS',cursive;}
+body{overflow:hidden; min-height:100vh; background:linear-gradient(#ffd6e8,#e0f7ff); transition: background 5s linear;}
+
+/* Intro Page */
+#intro{display:flex;align-items:center;justify-content:center;flex-direction:column;height:100vh;width:100vw;text-align:center;background:#ffe0f5;position:fixed;top:0;left:0;z-index:30;}
+#intro h1{font-size:clamp(30px,8vw,60px);color:#ff4f9a;margin-bottom:20px;}
+#startBtn{font-size:24px;padding:15px 30px;border:none;border-radius:25px;background:#ff4f9a;color:white;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+#startBtn:hover{transform:scale(1.05);}
+
+/* Balloon Page */
+#balloonTitle{position:fixed;top:10px;left:50%;transform:translateX(-50%);font-size:clamp(28px,6vw,48px);color:#ff4f9a;font-weight:bold;z-index:10;text-shadow:0 2px 5px rgba(0,0,0,0.2);}
+#counter{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:white;padding:10px 22px;border-radius:30px;font-size:18px;box-shadow:0 4px 10px rgba(0,0,0,0.2);z-index:10;}
+
+/* Balloon */
+.balloon{width:70px;height:90px;border-radius:50%;position:absolute;cursor:pointer;animation:float 8s linear infinite;}
+.balloon::after{content:"";width:2px;height:35px;background:#aaa;position:absolute;left:50%;top:100%;}
+@keyframes float{from{transform:translateY(100vh);}to{transform:translateY(-120px);}}
+
+/* Final page */
+#final{display:none;min-height:100vh;padding:50px 15px;text-align:center;position:relative;}
+#final h1{font-size:clamp(32px,6vw,48px);color:#ff4f9a;margin-bottom:10px;display:inline-block;margin-top:-20px;}
+#final p{font-size:clamp(18px,4vw,22px);margin-bottom:25px;}
+.photos{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;}
+.photos img{width:min(45vw,160px);border-radius:20px;animation: floatPhoto 6s ease-in-out infinite;}
+@keyframes floatPhoto{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+
+/* Final message box with scroll */
+.message-box{
+  overflow-y: auto;           /* scroll if text overflows */
+  max-height: 70vh;           /* taller box for full visibility */
+  line-height:1.6;
+  font-family:'Comic Sans MS',cursive;
+  font-size:16px;
+  padding:25px;
+  background:#fff0f5;
+  color:#555;
+  border-radius:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+/* Custom scrollbar */
+.message-box::-webkit-scrollbar { width:8px; }
+.message-box::-webkit-scrollbar-track { background: #ffe0f5; border-radius:20px; }
+.message-box::-webkit-scrollbar-thumb { background: #ff4f9a; border-radius:20px; }
+
+/* Hearts and sparkles */
+.heart,.sparkle{position:fixed; pointer-events:none; animation:floatUp 5s linear forwards;}
+@keyframes floatUp{0%{opacity:1;}100%{transform:translateY(-100vh);opacity:0;}}
+
+/* Confetti */
+.confetti{position:fixed;width:10px;height:10px;background-color:red;opacity:0.8;pointer-events:none;animation:confettiFall 3s linear forwards;}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(100vh) rotate(360deg);}}
+
+/* Completion Button */
+#completeBtn{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#ff4f9a;color:white;font-size:22px;padding:20px 40px;border:none;border-radius:25px;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.2);z-index:20;transition: transform 0.2s;}
+#completeBtn:hover{transform:translate(-50%,-50%) scale(1.05);}
+</style>
+</head>
+<body>
+
+<!-- Intro Page -->
+<div id="intro">
+  <h1>You know what day is Todayy??!!</h1>
+  <button id="startBtn">Lets Find Out!!!💖</button>
+</div>
+
+<!-- Balloon Page -->
+<div id="balloonTitle">Pop the Balloons!</div>
+<div id="counter">Days: <span id="days">0</span> / 30 💖</div>
+
+<audio id="popSound" src="sounds/pop.mp3"></audio>
+<audio id="music" src="sounds/music.mp3" autoplay loop></audio>
+
+<button id="completeBtn">30 Days Completed ➡</button>
+
+<!-- FINAL PAGE -->
+<div id="final">
+  <h1 id="finalHeading"></h1>
+  <p>Every day with you feels special 💖</p>
+  <div class="photos">
+    <img src="images/img1.jpg">
+    <img src="images/img2.jpg">
+    <img src="images/img3.jpg">
+    <img src="images/img4.jpg">
+    <img src="images/img5.jpg">
+  </div>
+  <div class="message-box">
+This past month has been the most magical time of my life Mansiii. I’ll never forget our late night talks, sharing dreams of travelling together and imagining the funn andd lovee we’ll have. Even those small little fights somehow felt special, because they reminded me how much we care. Every sweet text, every laugh, every quiet moment has been etched into my heart. I’ll always treasure the time you gave me your hair chucher ehehe, and how I gave you a chocolate which u didint eat for days!!, simple gestures that meant the world to me.
+Being with you has made every ordinary day extraordinary Mansi. I want to spend countless months, countless years, just like this, growing, laughing, dreaming, and loving together. You’ve made my life brighter and fuller than I ever imagined, and I can’t wait for everything that’s yet to come for us. 💕<br><br>
+~Your Shaurya
+  </div>
+</div>
+
+<script>
+let days=0;
+const daysSpan=document.getElementById("days");
+const popSound=document.getElementById("popSound");
+const completeBtn=document.getElementById("completeBtn");
+const finalHeading=document.getElementById("finalHeading");
+const intro=document.getElementById("intro");
+const startBtn=document.getElementById("startBtn");
+
+// Floating hearts/sparkles ONLY on intro page
+function floatingIntroEmojis(){
+  setInterval(()=>{
+    const e=document.createElement("div");
+    e.className=Math.random()<0.5?"heart":"sparkle";
+    e.innerHTML=Math.random()<0.5?"💖":"✨";
+    const startFromMiddle=Math.random()<0.3;
+    e.style.top=startFromMiddle?"50vh":"100vh";
+    e.style.left=Math.random()*100+"vw";
+    e.style.fontSize=(12+Math.random()*20)+"px";
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),5000);
+  },200);
+}
+floatingIntroEmojis();
+
+// Start button click
+startBtn.onclick = ()=>{
+  intro.style.display="none";
+  createBalloons();
+}
+
+// Balloons
+function createBalloons(){for(let i=0;i<5;i++) createBalloon();}
+function createBalloon(){
+  const b=document.createElement("div");
+  b.className="balloon";
+  b.style.left=Math.random()*90+"vw";
+  b.style.background=["#ffb3d9","#b3ecff","#ffd9b3"][Math.floor(Math.random()*3)];
+  b.style.animationDuration=(6+Math.random()*4)+"s";
+  b.onclick=()=>{
+    popSound.currentTime=0; popSound.play();
+    b.remove();
+    days+=5;
+    daysSpan.textContent=days;
+    createBalloon();
+    if(days>=30) showCompletionButton();
+  };
+  document.body.appendChild(b);
+}
+
+// Show completion button
+function showCompletionButton(){
+  document.querySelectorAll('.balloon').forEach(b=>b.remove());
+  document.getElementById('counter').style.display='none';
+  document.getElementById('balloonTitle').style.display='none';
+  completeBtn.style.display='block';
+}
+
+// Click completion button -> final page
+completeBtn.onclick = ()=>{
+  completeBtn.style.display='none';
+  document.getElementById('final').style.display='block';
+  typeText("Happy One Month Anniversary ❤️");
+  heartRain();
+  confettiBurst();
+  sparklesFall();
+  animateBackground();
+}
+
+// Floating hearts on final page
+function heartRain(){
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart"; h.innerHTML="💖";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  },300);
+}
+
+// Confetti
+function confettiBurst(){
+  for(let i=0;i<100;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.background=["#ff4f9a","#ffd93d","#4fe3ff","#a6ff4f"][Math.floor(Math.random()*4)];
+    c.style.left=Math.random()*100+"vw";
+    c.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+}
+
+// Sparkles on final page
+function sparklesFall(){
+  setInterval(()=>{
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    s.style.width=s.style.height=(3+Math.random()*4)+"px";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),4000);
+  },200);
+}
+
+// Typing effect
+function typeText(text){
+  finalHeading.textContent="";
+  let i=0;
+  const interval=setInterval(()=>{
+    finalHeading.textContent+=text[i];
+    i++;
+    if(i>=text.length) clearInterval(interval);
+  },100);
+}
+
+// Background gradient animation
+function animateBackground(){
+  let colors=["#ffd6e8","#e0f7ff","#ffe0f0","#d0f0ff"];
+  let i=0;
+  setInterval(()=>{
+    document.body.style.background=`linear-gradient(${colors[i]}, ${colors[(i+1)%colors.length]})`;
+    i=(i+1)%colors.length;
+  },5000);
+}
+</script>
+
+</body>
+</html>
