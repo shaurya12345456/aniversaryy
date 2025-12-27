@@ -77,21 +77,17 @@ body{overflow:hidden; min-height:100vh; background:linear-gradient(#ffd6e8,#e0f7
 <audio id="popSound" src="sounds/pop.mp3"></audio>
 <audio id="music" src="sounds/music.mp3" autoplay loop></audio>
 
-<button id="completeBtn">30 Days Completed ➡</button>
+<button id="completeBtn">30 Days Completed💞➡</button>
 
 <!-- FINAL PAGE -->
 <div id="final">
   <h1 id="finalHeading"></h1>
   <p>Every day with you feels special 💖</p>
   <div class="photos">
-    <img src="./images/img1.jpg">
-    <img src="./images/img2.jpg">
-    <img src="./images/img3.jpg">
-    <img src="./images/img4.jpg">
-    <img src="./images/img5.jpg">
+  
   </div>
   <div class="message-box">
-This past month has been the most magical time of my life Mansiii. I’ll never forget our late night talks, sharing dreams of travelling together and imagining the funn andd lovee we’ll have. Even those small little fights somehow felt special, because they reminded me how much we care. Every sweet text, every laugh, every quiet moment has been etched into my heart. I’ll always treasure the time you gave me your hair chucher ehehe, and how I gave you a chocolate which u didint eat for days!!, simple gestures that meant the world to me.
+This past month has been the most magical time of my life Mansiii.I never in my dreams thought ill find someone so pure like you.I remember evey second we spent together. I’ll never forget our late night talks, sharing dreams of travelling together and imagining the funn andd lovee we’ll have. Even those small little fights somehow felt special, because they reminded me how much we care. Every sweet text, every laugh, every quiet moment has been etched into my heart. I’ll always treasure the time you gave me your hair chucher ehehe, and how I gave you a chocolate which u didint eat for days!!, simple gestures that meant the world to me.
 Being with you has made every ordinary day extraordinary Mansi. I want to spend countless months, countless years, just like this, growing, laughing, dreaming, and loving together. You’ve made my life brighter and fuller than I ever imagined, and I can’t wait for everything that’s yet to come for us. 💕<br><br>
 ~Your Shaurya
   </div>
@@ -139,7 +135,7 @@ function createBalloon(){
   b.onclick=()=>{
     popSound.currentTime=0; popSound.play();
     b.remove();
-    days+=5;
+    days+=1;
     daysSpan.textContent=days;
     createBalloon();
     if(days>=30) showCompletionButton();
@@ -226,4 +222,5 @@ function animateBackground(){
 
 </body>
 </html>
+
 
