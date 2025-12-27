@@ -33,8 +33,8 @@ body{overflow:hidden; min-height:100vh; background:linear-gradient(#ffd6e8,#e0f7
 
 /* Final message box with scroll */
 .message-box{
-  overflow-y: auto;           /* scroll if text overflows */
-  max-height: 70vh;           /* taller box for full visibility */
+  overflow-y: auto;
+  max-height: 70vh;
   line-height:1.6;
   font-family:'Comic Sans MS',cursive;
   font-size:16px;
@@ -60,6 +60,7 @@ body{overflow:hidden; min-height:100vh; background:linear-gradient(#ffd6e8,#e0f7
 /* Completion Button */
 #completeBtn{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#ff4f9a;color:white;font-size:22px;padding:20px 40px;border:none;border-radius:25px;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.2);z-index:20;transition: transform 0.2s;}
 #completeBtn:hover{transform:translate(-50%,-50%) scale(1.05);}
+
 </style>
 </head>
 <body>
@@ -75,7 +76,7 @@ body{overflow:hidden; min-height:100vh; background:linear-gradient(#ffd6e8,#e0f7
 <div id="counter">Days: <span id="days">0</span> / 30 💖</div>
 
 <audio id="popSound" src="sounds/pop.mp3"></audio>
-<audio id="music" src="sounds/music.mp3" autoplay loop></audio>
+<audio id="music" src="sounds/music.mp3" loop></audio>
 
 <button id="completeBtn">30 Days Completed ➡</button>
 
@@ -84,11 +85,11 @@ body{overflow:hidden; min-height:100vh; background:linear-gradient(#ffd6e8,#e0f7
   <h1 id="finalHeading"></h1>
   <p>Every day with you feels special 💖</p>
   <div class="photos">
-    <img src="images./img1.jpg">
-    <img src="images./img2.jpg">
-    <img src="images./img3.jpg">
-    <img src="images./img4.jpg">
-    <img src="images./img5.jpg">
+    <img src="images/img1.jpg">
+    <img src="images/img2.jpg">
+    <img src="images/img3.jpg">
+    <img src="images/img4.jpg">
+    <img src="images/img5.jpg">
   </div>
   <div class="message-box">
 This past month has been the most magical time of my life Mansiii. I’ll never forget our late night talks, sharing dreams of travelling together and imagining the funn andd lovee we’ll have. Even those small little fights somehow felt special, because they reminded me how much we care. Every sweet text, every laugh, every quiet moment has been etched into my heart. I’ll always treasure the time you gave me your hair chucher ehehe, and how I gave you a chocolate which u didint eat for days!!, simple gestures that meant the world to me.
@@ -108,7 +109,7 @@ const startBtn=document.getElementById("startBtn");
 
 // Floating hearts/sparkles ONLY on intro page
 function floatingIntroEmojis(){
-  setInterval(()=>{
+  setInterval(()=>{ 
     const e=document.createElement("div");
     e.className=Math.random()<0.5?"heart":"sparkle";
     e.innerHTML=Math.random()<0.5?"💖":"✨";
@@ -125,6 +126,7 @@ floatingIntroEmojis();
 // Start button click
 startBtn.onclick = ()=>{
   intro.style.display="none";
+  document.getElementById("music").play(); // play music on click
   createBalloons();
 }
 
@@ -226,4 +228,3 @@ function animateBackground(){
 
 </body>
 </html>
-
